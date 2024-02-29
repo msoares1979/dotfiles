@@ -3,6 +3,7 @@
 -- Add any additional options here
 
 vim.wo.number = true
+vim.wo.conceallevel = 0
 
 -- hides the tabline, which is the line that displays the tabs at the top of Neovim.
 vim.opt.showtabline = 0
@@ -11,3 +12,8 @@ vim.opt.showtabline = 0
 -- https://vimtricks.com/p/open-splits-more-naturally/
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+-- Search options
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
