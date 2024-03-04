@@ -5,6 +5,10 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- Restore vim's original H and L cursor handling
+vim.keymap.del("n", "<S-h>", {})
+vim.keymap.del("n", "<S-l>", {})
+
 -- My Original mappings
 
 keymap.set("n", "<F3>", "<cmd>e %:h<Return>")
