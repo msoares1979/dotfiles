@@ -19,7 +19,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Scrolling
-vim.opt.scrolloff = 1
+vim.opt.scrolloff = 0
 
 -- Navigation
 vim.opt.whichwrap = "<,>,[,],h,l"
