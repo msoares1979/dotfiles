@@ -17,3 +17,12 @@ vim.opt.splitbelow = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Scrolling
+vim.opt.scrolloff = 1
+
+-- Navigation
+vim.opt.whichwrap = "<,>,[,],h,l"
+
+-- Clipboard
+vim.opt.clipboard = "unnamed"
