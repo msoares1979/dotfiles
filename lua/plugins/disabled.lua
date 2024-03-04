@@ -1,1 +1,4 @@
-return { "flash.nvim", enabled = false }
+return {
+  { "flash.nvim", enabled = false },
+  { "akinsho/bufferline.nvim", enabled = false },
+}
