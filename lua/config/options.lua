@@ -18,11 +18,12 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Scrolling
-vim.opt.scrolloff = 0
-
 -- Navigation
 vim.opt.whichwrap = "<,>,[,],h,l"
+vim.opt.scrolloff = 0
 
 -- Clipboard
 vim.opt.clipboard = "unnamed"
+
+-- Editing
+vim.g.autoformat = false
