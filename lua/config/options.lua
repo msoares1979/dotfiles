@@ -25,5 +25,5 @@ vim.opt.scrolloff = 0
 -- Clipboard
 vim.opt.clipboard = "unnamed"
 
--- Editing
+-- Coding
 vim.g.autoformat = false
