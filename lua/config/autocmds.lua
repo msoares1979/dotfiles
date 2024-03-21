@@ -3,6 +3,7 @@
 -- Add any additional autocmds here
 
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  desc = "remove line numbers from terminal and start on insert mode",
   callback = function()
     if vim.o.buftype ~= "nofile" then
       vim.cmd("checktime")
