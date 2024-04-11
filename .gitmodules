@@ -1,0 +1,6 @@
+[submodule "devbox"]
+	path = devbox
+	url = git@github.com:msoares1979/devbox-setup.git
+[submodule "neovim"]
+	path = neovim
+	url = git@github.com:msoares1979/dotfiles-neovim.git
