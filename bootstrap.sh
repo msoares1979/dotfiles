@@ -23,7 +23,7 @@ command -v stow || { sudo apt update && sudo apt install stow; }
 backup ~ .profile
 stow -vv -t ~ bashrc
 
-backup ~ .starship.toml
+backup ~/.config .starship.toml
 stow -vv -t ~ starship
 
 backup ~ .git-zappware-config .gitconfig
