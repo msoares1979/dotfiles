@@ -24,11 +24,13 @@ backup ~ .profile
 stow -vv -t ~ bashrc
 
 backup ~/.config .starship.toml
-stow -vv -t ~ starship
+stow -vv -t ~/.config starship
 
 backup ~ .git-zappware-config .gitconfig
 stow -vv -t ~ gitconfig
 
+mkdir -p ~/.config/nvim
 stow -vv -t ~/.config/nvim neovim
 
+mkdir -p ~/.config/devbox
 stow -vv -t ~/.config/devbox devbox
