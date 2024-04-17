@@ -25,5 +25,15 @@ vim.opt.scrolloff = 0
 -- Clipboard
 vim.opt.clipboard = "unnamed"
 
--- Coding
+-- Coding, Formatting
 vim.g.autoformat = false
+-- See https://github.com/LazyVim/LazyVim/issues/1759
+vim.opt.formatexpr = nil
+
+-- Fix-up gqq (avoid formatexpr from LSP)
+-- See https://vi.stackexchange.com/a/39800
+ vim.api.nvim_create_autocmd('LspAttach', {
+   callback = function(args)
+     vim.bo[args.buf].formatexpr = nil
+   end,
+ })
