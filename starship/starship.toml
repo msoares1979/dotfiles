@@ -2,10 +2,10 @@
 
 format = """
 ⎡\
-[](color_orange)\
+[](color_blue)\
 $os\
 $username\
-[](bg:color_yellow fg:color_orange)\
+[](bg:color_yellow fg:color_blue)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
@@ -23,8 +23,10 @@ $python\
 [](fg:color_blue bg:color_bg3)\
 $docker_context\
 $conda\
-[](fg:color_bg3 bg:color_bg1)\
+[ ](fg:color_bg1 bg:color_bg3)\
+[](fg:color_bg3)\
 $fill\
+[](fg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
 $line_break$character"""
@@ -45,7 +47,7 @@ color_yellow = '#d79921'
 
 [os]
 disabled = false
-style = "bg:color_orange fg:color_fg0"
+style = "bg:color_blue fg:color_fg0"
 
 [os.symbols]
 Windows = "󰍲"
@@ -70,8 +72,8 @@ RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "bg:color_orange fg:color_fg0"
-style_root = "bg:color_orange fg:color_fg0"
+style_user = "bg:color_blue fg:color_fg0"
+style_root = "bg:color_blue fg:color_fg0"
 format = '[ $user ]($style)'
 
 [directory]

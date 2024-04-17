@@ -39,3 +39,5 @@ weather() {
 if [ -d /opt/android-studio/bin ]; then
     export PATH=${PATH}:/opt/android-studio/bin
 fi
+
+command -v starship 2>/dev/null && eval "$(starship init bash --print-full-init)"
