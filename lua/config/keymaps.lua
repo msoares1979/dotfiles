@@ -24,3 +24,7 @@ keymap.set("n", "<C-n>", "<cmd>cn<Return>")
 -- Window navigation
 keymap.set("n", "<C-Tab>", "gt")
 keymap.set("n", "<C-S-Tab>", "gT")
+
+-- Terminal mapping
+keymap.set("n", "<leader>tv", "<esc><cmd>vnew term://bash<cr>")
+keymap.set("n", "<leader>tn", "<esc><cmd>new term://bash<cr>")
