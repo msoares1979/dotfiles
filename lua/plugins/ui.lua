@@ -177,11 +177,11 @@ return {
     event = "LazyFile",
     opts = {
       signs = {
-        add = { text = "▎" },
+        add = { text = "" },
         change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "" },
         untracked = { text = "▎" },
       },
       on_attach = function(buffer)
@@ -192,8 +192,9 @@ return {
         end
 
         -- stylua: ignore start
-        map("n", "]h", gs.next_hunk, "Next Hunk")
-        map("n", "[h", gs.prev_hunk, "Prev Hunk")
+        local opts = { wrap = true }
+        map("n", "]c", function() gs.nav_hunk("next", opts, nil) end, "Next Hunk")
+        map("n", "[c", function() gs.nav_hunk("prev", opts, nil) end, "Prev Hunk")
       end,
     },
   },
