@@ -93,6 +93,17 @@ format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
 [git_status]
 style = "bg:color_aqua"
 format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+conflicted = ''
+ahead = '⇡'
+behind = '⇣'
+diverged = '⇕'
+#up_to_date = ''
+untracked = ''
+stashed = ''
+modified = ''
+staged = ''
+renamed = '»'
+deleted = '✘'
 
 [nodejs]
 symbol = ""
