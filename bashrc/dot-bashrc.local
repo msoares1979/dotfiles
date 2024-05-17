@@ -6,6 +6,10 @@ set -o vi
 export USERNAME="Milton Soares Filho"
 export EMAIL="milton.soares.filho@gmail.com"
 
+run-devbox() {
+  devbox shell -c ~/.config/devbox
+}
+
 weather() {
   [ $# -lt 1 ] && place="Hasselt" || place="$*?format=v2"
 
