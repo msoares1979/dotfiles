@@ -1,0 +1,32 @@
+#!/bin/bash -f
+
+echo "Executing setup for .bashrc"
+
+set -o vi
+export USERNAME="Milton Soares Filho"
+export EMAIL="milton.soares.filho@gmail.com"
+
+weather() {
+  [ $# -lt 1 ] && place="Hasselt" || place="$*?format=v2"
+
+  if [ "${place}" = "--help" ]; then
+    place=":help"
+  fi
+  curl "https://wttr.in/${place}"
+}
+
+if [ -d /opt/android-studio/bin ]; then
+    export PATH=${PATH}:/opt/android-studio/bin
+fi
+#
+#export CDPATH=".:~/projects/zappware"
+
+if command -v starship 2>&1 1>/dev/null; then
+  echo "Setup starship"
+  eval "$(starship init bash --print-full-init)"
+fi
+
+if command -v direnv 2>&1 1>/dev/null; then
+  echo "Setup direnv"
+  eval "$(direnv hook bash)"
+fi

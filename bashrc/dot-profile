@@ -26,18 +26,5 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-set -o vi
-
 export USERNAME="Milton Soares Filho"
 export EMAIL="milton.soares.filho@gmail.com"
-
-weather() {
-  [ $# -lt 1 ] && place="Hasselt" || place="$*"
-  curl "https://wttr.in/${place}"
-}
-
-if [ -d /opt/android-studio/bin ]; then
-    export PATH=${PATH}:/opt/android-studio/bin
-fi
-
-command -v starship 2>/dev/null && eval "$(starship init bash --print-full-init)"
