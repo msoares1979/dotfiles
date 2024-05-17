@@ -72,19 +72,14 @@ style_root = "bg:color_blue fg:color_fg0"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:color_fg0 bg:color_yellow"
+style = "fg:color_fg0 bg:color_bg2"
 format = "[ $path ]($style)"
-truncation_length = 2
-truncation_symbol = "…/"
+truncation_length = 8
+truncation_symbol = "… "
 truncate_to_repo = true
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
-"projects" = "󰲋 "
+#before_repo_root_style = '$style'
+#repo_root_style = '$style'
+#repo_root_format = '[$repo_root]($repo_root_style)$format[$read_only]($read_only_style) '
 
 [git_branch]
 symbol = ""
