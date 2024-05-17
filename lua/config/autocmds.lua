@@ -9,6 +9,8 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
       vim.cmd("checktime")
     end
     vim.opt.number = false
+    vim.opt.relativenumber = false
+    vim.opt.signcolumn = "no"
     vim.cmd("startinsert")
   end,
 })
