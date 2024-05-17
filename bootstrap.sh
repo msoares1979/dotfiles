@@ -21,7 +21,15 @@ backup()
 command -v stow || { sudo apt update && sudo apt install stow; }
 
 backup ~ .profile
+backup ~ .bashrc
 stow -vv -t ~ bashrc
+if ! grep '. ~/.bashrc.local' ~/.bashrc; then
+  sed -i \
+    -e '$a\if [ -f ~/.bashrc.local ]; then' \
+    -e '$a\  . ~/.bashrc.local' \
+    -e '$a\fi' \
+    ~/.bashrc
+fi
 
 backup ~/.config .starship.toml
 stow -vv -t ~/.config starship
