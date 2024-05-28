@@ -34,3 +34,6 @@ if command -v direnv 2>&1 1>/dev/null; then
   echo "Setup direnv"
   eval "$(direnv hook bash)"
 fi
+
+FZF_DEFAULT_OPTS="--border=rounded --preview='file {}; echo; hexdump -n200 -C {}' --bind 'enter:become(nvim {})'"
+export FZF_DEFAULT_OPTS

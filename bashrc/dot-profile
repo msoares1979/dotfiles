@@ -25,6 +25,3 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-
-export USERNAME="Milton Soares Filho"
-export EMAIL="milton.soares.filho@gmail.com"
