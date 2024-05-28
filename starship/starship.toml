@@ -39,6 +39,7 @@ color_white = '#ffffff'
 color_git = '#f56d4e'
 color_success = 'green'
 color_failure = '#ff5555'
+color_duration = '#009900'
 
 #⌈ ⎛ ⎾
 #⌊ ⎝ ⎿
@@ -186,8 +187,12 @@ signal_symbol = '⚡'
 
 [cmd_duration]
 disabled = false
-format = '[ $duration ]($style)'
-style = 'fg:color_fg0 bg:color_bg3'
+format = """
+[](fg:color_bg3 bg:color_duration)\
+[  $duration]($style)\
+[](fg:color_duration bg:color_bg3)\
+"""
+style = 'fg:color_fg0 bg:color_duration'
 min_time = 15_000
 show_notifications = true
 min_time_to_notify = 90_000
