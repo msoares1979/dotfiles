@@ -178,9 +178,13 @@ disabled = false
 [status]
 disabled = false
 #format = '[ $symbol ](bg:color_bg3)'
-format = '[ $symbol]($style)'
-style = 'fg:color_failure bg:color_bg3'
-symbol = '${status}${signal_name}'
+format = """
+[](fg:color_bg3 bg:color_failure)\
+[ $symbol]($style)\
+[](fg:color_failure bg:color_bg3)\
+"""
+style = 'fg:color_fg0 bg:color_failure'
+symbol = ' rc=${status} ${signal_name}'
 signal_symbol = '⚡'
 #success_symbol = '[](fg:color_success bg:color_bg3)'
 #error_symbol = '[](fg:bold red bg:color_bg3)'
