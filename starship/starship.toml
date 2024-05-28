@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-${custom.beginchar}
+${custom.beginchar}\
 $directory\
 $os\
 $git_branch\
@@ -45,11 +45,11 @@ color_failure = '#ff5555'
 #  ▷ ☯  ♺ ♻
 [custom.beginchar]
 when = true
-format = ''
+format = '⎛ '
 
 [custom.endchar]
 when = true
-format = '♺'
+format = '⎝ ♺'
 
 [os]
 disabled = false
