@@ -28,6 +28,8 @@ vim.opt.mouse = ''
 
 -- Coding, Formatting
 vim.g.autoformat = false
+vim.opt.expandtab = false
+
 -- See https://github.com/LazyVim/LazyVim/issues/1759
 vim.opt.formatexpr = nil
 
