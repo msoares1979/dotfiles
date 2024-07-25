@@ -30,13 +30,11 @@ vim.opt.mouse = ''
 vim.g.autoformat = false
 vim.opt.expandtab = false
 
--- See https://github.com/LazyVim/LazyVim/issues/1759
-vim.opt.formatexpr = nil
-
--- Fix-up gqq (avoid formatexpr from LSP)
--- See https://vi.stackexchange.com/a/39800
- vim.api.nvim_create_autocmd('LspAttach', {
-   callback = function(args)
-     vim.bo[args.buf].formatexpr = nil
-   end,
- })
+-- XXX Use gww instead!
+-- -- Fix-up gqq (avoid formatexpr from LSP)
+-- -- See https://vi.stackexchange.com/a/39800
+--  vim.api.nvim_create_autocmd('LspAttach', {
+--    callback = function(args)
+--      vim.bo[args.buf].formatexpr = nil
+--    end,
+--  })
