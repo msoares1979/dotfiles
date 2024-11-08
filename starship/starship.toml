@@ -1,22 +1,25 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+  \
+$memory_usage\
+$jobs\
+$cmd_duration\
+$status\
+$line_break\
 ${custom.beginchar}\
 $directory\
+[](color_bg3)\
 $os\
 $git_branch\
 $git_status\
-$memory_usage\
-$jobs\
-$status\
-$cmd_duration\
 [](fg:color_bg3)\
 $fill\
-[](fg:color_bg1)\
+[](fg:color_bg3)\
 $time\
-[](fg:color_bg1)\
+[](fg:color_bg3)\
 $line_break\
-${custom.endchar} \
+${custom.promptchar} \
 """
 
 continuation_prompt = ' '
@@ -39,23 +42,23 @@ color_white = '#ffffff'
 color_git = '#f56d4e'
 color_success = 'green'
 color_failure = '#ff5555'
-color_duration = '#009900'
-color_jobs = '#000099'
+color_duration = '#37c6ff'
+color_jobs = '#555599'
 
-#⌈ ⎛ ⎾
-#⌊ ⎝ ⎿
+#⌈ ⎛ ⎾ ⎧
+#⌊ ⎝ ⎿ ⎩
 #  ▷ ☯  ♺ ♻
 [custom.beginchar]
 when = true
-format = '⎛ '
+format = '⎧ '
 
-[custom.endchar]
+[custom.promptchar]
 when = true
-format = '⎝ ♺'
+format = '⎩ ♺'
 
 [os]
 disabled = false
-format = '[](color_bg3)[$symbol]($style)'
+format = '[$symbol ]($style)'
 style = "fg:color_orange bg:color_bg3"
 
 [os.symbols]
@@ -105,25 +108,28 @@ format = """\
 
 [git_status]
 style = "bg:color_git"
-format = '[\[[($all_status$ahead_behind)](fg:color_fg0 bg:color_git)\]]($style)[](fg:color_git bg:color_bg3)'
+format = '[\[[(${all_status}  ${ahead_behind})](fg:color_fg0 bg:color_git)\]]($style)[](fg:color_git bg:color_bg3)'
 conflicted = ''
 #conflicted = ''
 ahead = '${count}⇡'
 behind = '${count}⇣'
 diverged = '⇕'
-#up_to_date = ''
-untracked = ' '
-stashed = ' '
-modified = '${count}'
-staged = ' '
-renamed = ' »'
-deleted = '${count}'
+up_to_date = ''
+untracked = '${count}'  #    
+stashed = ''
+staged = '${count} '
+deleted = '${count} '
+modified = '${count} '
+renamed = '${count} '
+
+# file style         
+# squared style      
 
 [memory_usage]
 disabled = false
 threshold = 65
-format = '[](fg:color_bg3 bg:color_blue)[ $symbol ${ram}]($style)[](fg:color_blue bg:color_bg3)'
-style = 'fg:color_fg0 bg:color_blue'
+format = '[$symbol ${ram} ]($style)'
+style = 'fg:color_fg0'
 symbol = '󰍛'
 
 [c]
@@ -156,13 +162,9 @@ style = "bg:color_bg3"
 format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [jobs]
-style = "fg:color_fg0 bg:color_jobs"
-format = """
-[](fg:color_bg3 bg:color_jobs)\
-[ $symbol$number ]($style)\
-[](fg:color_jobs bg:color_bg3)\
-"""
-symbol = '⏣' #''
+format = "[$symbol $number bg jobs ]($style)"
+style = "fg:color_jobs"
+symbol = '⏣' #  ⎔ 
 number_threshold = 1
 
 [fill]
@@ -174,21 +176,16 @@ style = 'fg:color_bg3'
 [time]
 disabled = false
 time_format = "%F %R"
-style = "bg:color_bg1"
-format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+style = "bg:color_bg3"
+format = '[[  $time](fg:color_fg0 bg:color_bg3)]($style)'
 
 [line_break]
 disabled = false
 
 [status]
 disabled = false
-#format = '[ $symbol ](bg:color_bg3)'
-format = """
-[](fg:color_bg3 bg:color_failure)\
-[ $symbol]($style)\
-[](fg:color_failure bg:color_bg3)\
-"""
-style = 'fg:color_fg0 bg:color_failure'
+format = "[$symbol ]($style)"
+style = 'fg:color_failure'
 symbol = ' rc=${status} ${signal_name}'
 signal_symbol = '⚡'
 #success_symbol = '[](fg:color_success bg:color_bg3)'
@@ -196,13 +193,9 @@ signal_symbol = '⚡'
 
 [cmd_duration]
 disabled = false
-format = """
-[](fg:color_bg3 bg:color_duration)\
-[  $duration]($style)\
-[](fg:color_duration bg:color_bg3)\
-"""
-style = 'fg:color_fg0 bg:color_duration'
-min_time = 15_000
-show_notifications = true
+format = "[ $duration ]($style)"
+style = 'fg:color_duration'
+min_time = 30_000
+show_notifications = false
 min_time_to_notify = 90_000
 notification_timeout = 10_000
