@@ -1,7 +1,5 @@
 #!/bin/bash -f
 
-echo "Executing setup for .bashrc"
-
 set -o vi
 export USERNAME="Milton Soares Filho"
 export EMAIL="milton.soares.filho@gmail.com"
