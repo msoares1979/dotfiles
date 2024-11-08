@@ -1,8 +1,12 @@
 #!/bin/bash -f
 
 set -o vi
+export EDITOR=nvim
 export USERNAME="Milton Soares Filho"
 export EMAIL="milton.soares.filho@gmail.com"
+
+export HISTSIZE=10000
+export HISTFILESIZE=20000
 
 run-devbox() {
   devbox shell -c ~/.config/devbox
@@ -35,3 +39,10 @@ fi
 
 FZF_DEFAULT_OPTS="--border=rounded --preview='file {}; echo; hexdump -n200 -C {}' --bind 'enter:become(nvim {})'"
 export FZF_DEFAULT_OPTS
+
+alias ll='ls -lrt --color'
+alias docker-ps='docker ps --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.Image}}"'
+
+termtitle() { printf "\033]0;$*\007"; }
+
+test "${DEVBOX_SHELL_ENABLED:-0}" -eq 1 || exec devbox shell -c ~/.config/devbox
