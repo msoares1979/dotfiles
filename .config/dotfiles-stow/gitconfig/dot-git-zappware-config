@@ -1,0 +1,4 @@
+[user]
+	email = milton.soares.filho@zappware.com
+[core]
+	sshCommand = "ssh -i ~/.ssh/zw_rsa"

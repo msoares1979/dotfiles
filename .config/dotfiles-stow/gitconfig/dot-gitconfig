@@ -1,0 +1,19 @@
+[user]
+	email = milton.soares.filho@gmail.com
+	name = Milton Soares Filho
+
+[alias]
+	st = status
+	graph = log --oneline --graph --decorate
+	ci = commit -s
+	co = checkout
+
+[merge]
+	tool = vimdiff
+[init]
+	defaultBranch = master
+[safe]
+	directory = *
+
+[includeif "gitdir:~/projects/zappware/**"]
+	path =  ~/.git-zappware-config

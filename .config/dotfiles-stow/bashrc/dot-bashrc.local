@@ -1,0 +1,54 @@
+#!/bin/bash -f
+
+set -o vi
+export EDITOR=nvim
+export USERNAME="Milton Soares Filho"
+export EMAIL="milton.soares.filho@gmail.com"
+
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+
+run-devbox() {
+  devbox shell -c ~/.config/devbox
+}
+
+# XXX See https://gnunn1.github.io/tilix-web/manual/vteconfig/
+# XXX It breaks PS1 support for starship
+# if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#         source /etc/profile.d/vte.sh
+# fi
+
+weather() {
+  [ $# -lt 1 ] && place="Hasselt" || place="$*?format=v2"
+
+  if [ "${place}" = "--help" ]; then
+    place=":help"
+  fi
+  curl "https://wttr.in/${place}"
+}
+
+if [ -d /opt/android-studio/bin ]; then
+    export PATH=${PATH}:/opt/android-studio/bin
+fi
+#
+#export CDPATH=".:~/projects/zappware"
+
+if command -v starship 2>&1 1>/dev/null; then
+  echo "Setup starship"
+  eval "$(starship init bash --print-full-init)"
+fi
+
+if command -v direnv 2>&1 1>/dev/null; then
+  echo "Setup direnv"
+  eval "$(direnv hook bash)"
+fi
+
+FZF_DEFAULT_OPTS="--border=rounded --bind 'enter:become(nvim {})'"
+export FZF_DEFAULT_OPTS
+
+alias ll='ls -lrt --color'
+alias docker-ps='docker ps --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.Image}}"'
+
+termtitle() { printf "\033]0;$*\007"; }
+
+test "${DEVBOX_SHELL_ENABLED:-0}" -eq 1 || exec devbox shell -c ~/.config/devbox
