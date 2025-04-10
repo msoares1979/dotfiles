@@ -23,7 +23,7 @@ vim.opt.whichwrap = "<,>,[,],h,l"
 vim.opt.scrolloff = 0
 
 -- Clipboard
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = ''
 
 -- Coding, Formatting
