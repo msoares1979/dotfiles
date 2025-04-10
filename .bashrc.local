@@ -49,7 +49,9 @@ export FZF_DEFAULT_OPTS
 alias ll='ls -lrt --color'
 alias docker-ps='docker ps --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.Image}}"'
 
-# handling dotfiles
+# Handling dotfiles as recommended by Atlassian article
+# Dotfiles: Best way to store in a bare git repository
+# See https://www.atlassian.com/git/tutorials/dotfiles
 alias dotconfig="git --git-dir=${HOME}/.config/dotfiles --work-tree=${HOME}"
 
 termtitle() { printf "\033]0;$*\007"; }
