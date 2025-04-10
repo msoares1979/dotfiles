@@ -1,3 +1,23 @@
+ProgressBar = function(slices)
+  require("math")
+  local endviewport = vim.fn.line("w$")
+  local startviewport = vim.fn.line("w0")
+  local linescount = vim.fn.line("$")
+
+  local f = function()
+    local active, inactive = "▰", "▱" --             
+    local filler = ""
+    local start = math.ceil(startviewport * slices / linescount)
+    local stop = math.ceil(endviewport * slices / linescount)
+    for i = 1, slices, 1 do
+      filler = filler .. (i >= start and i <= stop and active or inactive)
+    end
+    return filler
+  end
+
+  return f()
+end
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -10,14 +30,13 @@ return {
           theme = "auto",
           globalstatus = true,
           disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
-          component_separators = {}, -- { left = "▌", right = "▐" },
+          -- component_separators = { left = '', right = '' },
+          component_separators = {},
           section_separators = { left = "", right = "" },
         },
         sections = {
           lualine_a = {
-            function()
-              return "[" .. vim.fn.bufnr() .. "]"
-            end,
+            function() return "[" .. vim.fn.bufnr() .. "]" end,
             {
               "filename",
               file_status = true, -- Displays file status (readonly status, modified status)
@@ -55,11 +74,6 @@ return {
               color = "Debug"
             },
             {
-              require("lazy.status").updates,
-              cond = require("lazy.status").has_updates,
-              color = "Special"
-            },
-            {
               "diff",
               symbols = {
                 added = icons.git.added,
@@ -79,33 +93,10 @@ return {
             },
           },
           lualine_y = {
-            function() -- show progress
-              require("math")
-              local endviewport = vim.fn.line("w$")
-              local startviewport = vim.fn.line("w0")
-              local linescount = vim.fn.line("$")
-
-              local f = function(slices)
-                local active, inactive = "▰", "▱" --             
-                local filler = ""
-                local start = math.ceil(startviewport * slices / linescount)
-                local stop = math.ceil(endviewport * slices / linescount)
-                for i = 1, slices, 1 do
-                  filler = filler .. (i >= start and i <= stop and active or inactive)
-                end
-                return filler
-              end
-
-              --return "[" .. f(5) .. "]"
-              return f(7)
-            end,
+            { function() return ProgressBar(7) end },
             { "location", padding = { left = 0, right = 1 } },
           },
-          lualine_z = {
-            function()
-              return " " .. os.date("%R")
-            end,
-          },
+          lualine_z = { function() return "  " .. os.date("%R") end }
         },
         inactive_sections = {}, -- not enabled anyway
         tabline = {},
