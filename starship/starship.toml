@@ -11,8 +11,11 @@ ${custom.beginchar}\
 $directory\
 [](color_bg3)\
 $os\
-$git_branch\
-$git_status\
+[ ](bg:color_git fg:color_bg3)\
+${custom.pypoetry}\
+${git_branch}\
+${git_status}\
+[](fg:color_git bg:color_bg3)\
 [](fg:color_bg3)\
 $fill\
 [](fg:color_bg3)\
@@ -107,29 +110,33 @@ truncate_to_repo = true
 [git_branch]
 symbol = ""
 style = "bg:color_git"
-format = """\
-[](bg:color_git fg:color_bg3)\
-[[ $symbol $branch ](fg:color_fg0 bg:color_git)]($style)\
-"""
+format = '[ \[$symbol $branch ]($style)'
 
 [git_status]
 style = "bg:color_git"
-format = '[\[[(${all_status}  ${ahead_behind})](fg:color_fg0 bg:color_git)\]]($style)[](fg:color_git bg:color_bg3)'
+format = '[${all_status} ${ahead_behind}\]]($style)'
 conflicted = ''
 #conflicted = ''
 ahead = '${count}⇡'
 behind = '${count}⇣'
 diverged = '⇕'
 up_to_date = ''
-untracked = '${count}'  #    
+#untracked = '${count}'  #    
+untracked = ''
 stashed = ''
-staged = '${count} '
-deleted = '${count} '
-modified = '${count} '
-renamed = '${count} '
+staged = ' ${count}'
+deleted = ' ${count}'
+modified = ' ${count}'
+renamed = ' ${count}'
 
-# file style         
+# file style          
 # squared style      
+
+[custom.git]
+format = '[ [$git_branch$git_status\]]($style)'
+style = 'bg:color_git fg:color_fg0'
+require_repo = true
+when = true
 
 [memory_usage]
 disabled = false
