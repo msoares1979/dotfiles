@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """
-  \
+format = """\
+${custom.beginchar}\
 $memory_usage\
 $jobs\
 $cmd_duration\
@@ -50,11 +50,17 @@ color_jobs = '#555599'
 #  ▷ ☯  ♺ ♻
 [custom.beginchar]
 when = true
-format = '⎧ '
+#format = '⎧ '
+format = ' '
 
 [custom.promptchar]
 when = true
-format = '⎩ ♺'
+#format = '⎩ ♺'
+#format = ' '
+#format = ' '
+#format = ' '
+#format = ' '
+format = ' '
 
 [os]
 disabled = false
