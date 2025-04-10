@@ -1,0 +1,57 @@
+{
+  "packages": [
+    "path:devbox.d/bash",
+    "curl@latest",
+    "direnv@latest",
+    "docker-compose@latest",
+    "docker@latest",
+    "dos2unix@latest",
+    "dust@latest",
+    "fzf@latest",
+    "git@latest",
+    "glibcLocales@latest",
+    "gnupg@latest",
+    "jq@latest",
+    "neovim@latest",
+    "nerdfonts@latest",
+    "pstree@latest",
+    "python3@latest",
+    "ripgrep@latest",
+    "starship@latest",
+    "stow@latest",
+    "tmux@latest",
+    "vimgolf@latest"
+  ],
+  "env": {
+    "USERNAME": "Milton Soares Filho",
+    "EMAIL":    "milton.soares.filho@gmail.com",
+    "EDITOR":   "nvim",
+    "LANG":     "en_US.UTF-8",
+    "LC_CTYPE": "pt_BR.UTF-8",
+    "LAST": ""
+  },
+  "shell": {
+    "init_hook": [
+      "echo 'devbox init hook begin'",
+      "echo 'devbox init hook end'"
+    ],
+    "scripts": {
+      "work-from-home": [
+        "echo 'devbox work: running work-from-home'",
+        "export EMAIL=\"milton.soares.filho@zappware.com\"",
+        "nmcli radio wifi on",
+        "nmcli con up id 'Zappware VPN'",
+        "cd ~/projects/zappware/deployment/tasks"
+      ],
+      "work-from-office": [
+        "echo 'devbox work: running work-from-office'",
+        "export EMAIL=\"milton.soares.filho@zappware.com\"",
+        "nmcli radio wifi off",
+        "cd ~/projects/zappware/deployment/tasks"
+      ],
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}
