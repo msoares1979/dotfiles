@@ -12,6 +12,12 @@ run-devbox() {
   devbox shell -c ~/.config/devbox
 }
 
+# XXX See https://gnunn1.github.io/tilix-web/manual/vteconfig/
+# XXX It breaks PS1 support for starship
+# if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+#         source /etc/profile.d/vte.sh
+# fi
+
 weather() {
   [ $# -lt 1 ] && place="Hasselt" || place="$*?format=v2"
 
