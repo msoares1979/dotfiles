@@ -49,6 +49,9 @@ export FZF_DEFAULT_OPTS
 alias ll='ls -lrt --color'
 alias docker-ps='docker ps --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.Image}}"'
 
+# handling dotfiles
+alias dotconfig="git --git-dir=${HOME}/.config/dotfiles --work-tree=${HOME}"
+
 termtitle() { printf "\033]0;$*\007"; }
 
 test "${DEVBOX_SHELL_ENABLED:-0}" -eq 1 || exec devbox shell -c ~/.config/devbox
