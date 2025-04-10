@@ -1,5 +1,6 @@
 return {
   "telescope.nvim",
+  enabled = false,
   keys = {
     {
       "<leader>ff",
