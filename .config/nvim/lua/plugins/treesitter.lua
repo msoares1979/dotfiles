@@ -1,0 +1,25 @@
+return {
+  "nvim-treesitter/nvim-treesitter",
+  opts = {
+    ensure_installed = {
+      "bash",
+      "c",
+      "cmake",
+      "cpp",
+      "css",
+      "html",
+      "gitignore",
+      "graphql",
+      "javascript",
+      "json",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "regex",
+      "sql",
+      "vim",
+      "yaml",
+    },
+  },
+}
