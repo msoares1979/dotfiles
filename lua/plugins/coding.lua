@@ -1,110 +1,39 @@
 
 return {
-
   -- auto completion
   {
-    "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
-    event = "InsertEnter",
+    "saghen/blink.cmp",
+    enabled = true,
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
+      { 'L3MON4D3/LuaSnip', version = 'v2.*' }
     },
-    opts = function()
-      local cmp = require("cmp")
-      return {
-        completion = {
-          completeopt = "menu,menuone,noinsert",
-          autocomplete = false
+    opts =  {
+      snippets = { preset = 'default' },
+      --snippets = { preset = 'luasnip' },
+      sources = { default = { "lsp", "path", "snippets", "buffer", "copilot" } },
+      completion = {
+        keyword = { range = 'prefix' },
+        menu = { auto_show = false, border = 'single' },
+        -- Don't select by default, auto insert on selection    
+        list = { selection = { preselect = true, auto_insert = false } },
+        -- Show documentation when selecting a completion item
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 500,
+          window = { border = 'single' }
         },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-          ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-d>"] = cmp.mapping.scroll_docs(4),
-          ["<C-c>"] = cmp.mapping.abort(),
-          ["<esc>"] = cmp.mapping.abort(),
-          ["<C-y>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-          ["<S-CR>"] = function(fallback) cmp.mapping.abort() fallback() end,
-        }),
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        sources = cmp.config.sources({
-          { name = "copilot" },
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-        },
-        {
-          { name = "buffer" },
-          { name = "path" },
-        }),
-      }
-    end,
-  },
-
-  {
-    "zbirenbaum/copilot.lua",
-    config = function ()
-      require('copilot').setup({
-        panel = {
-          enabled = false,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "R",
-            open = "<M-\\>"
-          },
-          layout = {
-            position = "top | right", -- | top | left | right
-            ratio = 0.4
-          },
-        },
-        suggestion = {
-          enabled = false,
-          auto_trigger = false,
-          debounce = 75,
-          keymap = {
-            accept = "<M-l>",
-            accept_word = false,
-            accept_line = false,
-            next = "<M-n>",
-            prev = "<M-p>",
-            dismiss = "<C-]>",
-          },
-        },
-        filetypes = {
-          ansible = true,
-          yaml = true,
-          gitcommit = true,
-          lua = true,
-          c = true,
-          cpp = true,
-          vim = true,
-          ["*"] = false,
-        },
-        copilot_node_command = 'node', -- Node.js version must be > 18.x
-        server_opts_overrides = {},
-      })
-    end
-  },
-
-  {
-    "zbirenbaum/copilot-cmp",
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  },
-
-  {
-    "L3MON4D3/LuaSnip",
-    keys = function()
-      return {}
-    end,
+      },
+      signature = { window = { border = 'single' } },
+      keymap = {
+        preset = 'default',
+        ['<C-c>'] =  { function(cmp) cmp.cancel() end },
+        -- ['<CR>']  =  { 'select_and_accept', 'fallback' },
+        ['<C-u>'] =  { 'scroll_documentation_up', 'fallback' },
+        ['<C-d>'] =  { 'scroll_documentation_down', 'fallback' },
+        ['<Tab>'] =  { 'select_next', 'fallback' },
+        ['<Up>'] =   { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
+      },
+    },
   },
 }
