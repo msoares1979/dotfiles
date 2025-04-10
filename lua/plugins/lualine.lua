@@ -3,7 +3,6 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
-      local Util = require("lazyvim.util")
       local icons = require("lazyvim.config").icons
 
       return {
@@ -53,12 +52,12 @@ return {
             {
               function() return "  " .. require("dap").status() end,
               cond = function() return package.loaded["dap"] and require("dap").status() ~= "" end,
-              color = Util.ui.fg("Debug"),
+              color = "Debug"
             },
             {
               require("lazy.status").updates,
               cond = require("lazy.status").has_updates,
-              color = Util.ui.fg("Special"),
+              color = "Special"
             },
             {
               "diff",
@@ -87,7 +86,7 @@ return {
               local linescount = vim.fn.line("$")
 
               local f = function(slices)
-                local active, inactive = "", "" -- 
+                local active, inactive = "▰", "▱" --             
                 local filler = ""
                 local start = math.ceil(startviewport * slices / linescount)
                 local stop = math.ceil(endviewport * slices / linescount)
@@ -97,7 +96,8 @@ return {
                 return filler
               end
 
-              return "[" .. f(5) .. "]"
+              --return "[" .. f(5) .. "]"
+              return f(7)
             end,
             { "location", padding = { left = 0, right = 1 } },
           },
