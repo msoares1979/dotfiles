@@ -165,6 +165,13 @@ symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
+[custom.pypoetry]
+#symbol = ""
+symbol = ""
+when = ''' test "${POETRY_ACTIVE}" = "1" -o -d "${VIRTUAL_ENV}" '''
+style = "bg:color_git"
+format = '[ $symbol ]($style)'
+
 [docker_context]
 symbol = ""
 style = "bg:color_bg3"
