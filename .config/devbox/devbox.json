@@ -14,6 +14,7 @@
     "jq@latest",
     "neovim@latest",
     "nerdfonts@latest",
+    "nodejs",
     "pstree@latest",
     "python3@latest",
     "ripgrep@latest",
