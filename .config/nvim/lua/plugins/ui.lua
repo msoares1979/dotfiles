@@ -6,74 +6,64 @@ require("catppuccin").setup {
   end
 }
 
---require("mini.animate").setup {
---	config = {
---    -- Cursor path
---    cursor = {
---      -- Whether to enable this animation
---      enable = true,
---
---      -- Timing of animation (how steps will progress in time)
---      timing = --<function: implements linear total 250ms animation duration>,
---
---      -- Path generator for visualized cursor movement
---      path = --<function: implements shortest line path>,
---    },
---
---    -- Vertical scroll
---    scroll = {
---      -- Whether to enable this animation
---      enable = true,
---
---      -- Timing of animation (how steps will progress in time)
---      timing = --<function: implements linear total 250ms animation duration>,
---
---      -- Subscroll generator based on total scroll
---      subscroll = --<function: implements equal scroll with at most 60 steps>,
---    },
---
---    -- Window resize
---    resize = {
---      -- Whether to enable this animation
---      enable = true,
---
---      -- Timing of animation (how steps will progress in time)
---      timing = --<function: implements linear total 250ms animation duration>,
---
---      -- Subresize generator for all steps of resize animations
---      subresize = --<function: implements equal linear steps>,
---    },
---
---    -- Window open
---    open = {
---      -- Whether to enable this animation
---      enable = true,
---
---      -- Timing of animation (how steps will progress in time)
---      timing = --<function: implements linear total 250ms animation duration>,
---
---      -- Floating window config generator visualizing specific window
---      winconfig = --<function: implements static window for 25 steps>,
---
---      -- 'winblend' (window transparency) generator for floating window
---      winblend = --<function: implements equal linear steps from 80 to 100>,
---    },
---
---    -- Window close
---    close = {
---      -- Whether to enable this animation
---      enable = true,
---
---      -- Timing of animation (how steps will progress in time)
---      timing = --<function: implements linear total 250ms animation duration>,
---
---      -- Floating window config generator visualizing specific window
---      winconfig = --<function: implements static window for 25 steps>,
---
---      -- 'winblend' (window transparency) generator for floating window
---      winblend = --<function: implements equal linear steps from 80 to 100>,
---    },
---  }
---}
-
-return {}
+return {
+  {
+    "snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          pick = function(cmd, opts)
+            return LazyVim.pick(cmd, opts)()
+          end,
+          header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+          ]],
+          -- stylua: ignore
+          ---@type snacks.dashboard.Item[]
+          keys = {
+            { hidden = true, icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { hidden = true, icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { hidden = true, icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { hidden = true, icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { hidden = true, icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
+        sections = {
+          { section = "header", align = "center" },
+          { section = "keys", gap = 1, padding = 1 },
+          {
+            align = 'center',
+            padding = 1,
+            text = {
+              { "   New File (n)" },
+              { "   Find File (f)" },
+              { "   Find Text (g)" },
+              { " 󰒲  Lazy (l)" },
+              { "   Quit (q)" }
+            }
+          },
+          { section = "recent_files", icon = " ", title = "Recent Files", indent = 2, padding = 1 },
+          { section = "session", indent = 2, padding = 1 },
+          {
+            section = "terminal",
+            icon = " ",
+            title = "Git Status",
+            enabled = function()
+              return Snacks.git.get_root() ~= nil
+            end,
+            cmd = "git status --short --branch --renames",
+            height = 7,
+            padding = 1,
+            indent = 2,
+          },
+          { section = "startup" }
+        }
+      },
+    },
+  }
+}
