@@ -15,14 +15,16 @@ return {
           pick = function(cmd, opts)
             return LazyVim.pick(cmd, opts)()
           end,
-          header = [[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-          ]],
+          header = (function ()
+            local lines = {}
+            local f = io.open(vim.fn.stdpath("config") .. "/lua/plugins/header.ascii", "r")
+            if not f then return "" end
+            for line in f:lines() do
+              table.insert(lines, #lines + 1, line)
+            end
+            f:close()
+            return table.concat(lines, "\n")
+          end)(),
           -- stylua: ignore
           ---@type snacks.dashboard.Item[]
           keys = {
