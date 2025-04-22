@@ -36,7 +36,14 @@ return {
           },
         },
         sections = {
-          { section = "header", align = "center" },
+          { section = "header", align = "center", enabled = false },
+          {
+            section = "terminal",
+            cmd = "chafa -s 64x32 --symbols block " .. vim.fn.stdpath("config") .. "/lua/plugins/header.jpg",
+            width = 64,
+            height = 20,
+            padding = 1
+          },
           { section = "keys", gap = 1, padding = 1 },
           {
             align = 'center',
