@@ -16,4 +16,4 @@
 	directory = *
 
 [includeif "gitdir:~/projects/zappware/**"]
-	path =  ~/.git-zappware-config
+	path =  ~/.config/git/zappware
