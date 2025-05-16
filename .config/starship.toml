@@ -1,88 +1,96 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """\
-${custom.beginchar}\
-$memory_usage\
-$jobs\
-$cmd_duration\
-$status\
-$line_break\
-${custom.beginchar}\
-$directory\
-[](color_bg3)\
+# See https://github.com/starship/starship/discussions/1107#discussioncomment-11666645
+
+format = """
 $os\
-[ ](bg:color_git fg:color_bg3)\
-${custom.pypoetry}\
-${git_branch}\
-${git_status}\
-[](fg:color_git bg:color_bg3)\
-[](fg:color_bg3)\
+$directory\
+$git_branch\
+$git_status\
+$docker_context\
+$golang\
+$nodejs\
+$python\
+$rust\
+$c\
+$cpp\
+$lua\
+\
 $fill\
-[](fg:color_bg3)\
+\
+$cmd_duration\
+$jobs\
+$status\
+$memory_usage\
+$localip\
 $time\
-[](fg:color_bg3)\
+$username\
 $line_break\
-${custom.promptchar} \
+$character\
 """
 
-continuation_prompt = ' '
+palette = 'custom'
+add_newline = true
 
-palette = 'gruvbox_dark'
+[palettes.custom]
+foreground = '#222222'
+background = '#1E1E2E'
+current_line = '#777777'
+primary = '#313244'
+box = '#777777'
+blue = '#8AADF4'
+cyan = '#76E3F6'
+green = '#A6E3A1'
+orange = '#FFAF74'
+pink = '#F5BDE6'
+purple = '#CBA6F7'
+red = '#F38BA8'
+yellow = '#F9E2AF'
+status = "#e23140"
 
-[palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
-color_bg1 = '#3c3836'
-color_bg2 = '#555599'
-color_bg3 = '#665c54'
-color_blue = '#4585aa'
-color_aqua = '#689d6a'
-color_green = '#98971a'
-color_orange = '#d65d0e'
-color_purple = '#b16286'
-color_red = '#cc241d'
-color_yellow = '#d79921'
-color_white = '#ffffff'
-color_git = '#f56d4e'
-color_success = 'green'
-color_failure = '#ff5555'
-color_duration = '#37c6ff'
-color_jobs = '#555599'
+[palettes.catppuccin_mocha]
+foreground = '#D9E0EE'
+background = '#1E1E2E'
+current_line = '#2E2E3E'
+primary = '#313244'
+box = '#2E2E3E'
+blue = '#8AADF4'
+cyan = '#76E3F6'
+green = '#A6E3A1'
+orange = '#F9AF74'
+pink = '#F5BDE6'
+purple = '#CBA6F7'
+red = '#F38BA8'
+yellow = '#F9E2AF'
+status = "#e23140"
 
-#⌈ ⎛ ⎾ ⎧
-#⌊ ⎝ ⎿ ⎩
-#  ▷ ☯  ♺ ♻
-[custom.beginchar]
-when = true
-#format = '⎧ '
-format = ' '
-
-[custom.promptchar]
-when = true
-#format = '⎩ ♺'
-#format = ' '
-#format = ' '
-#format = ' '
-#format = ' '
-format = ' '
+[palettes.tokyo_night]
+foreground = '#D8D8D8'
+background = '#1A1B26'
+current_line = '#2A2C37'
+primary = '#292E42'
+box = '#2A2C37'
+blue = '#7AA2F7'
+cyan = '#7FDBCA'
+green = '#98C379'
+orange = '#FF9E64'
+pink = '#FF75A0'
+purple = '#BB80B3'
+red = '#F7768E'
+yellow = '#E5C07B'
+status = "#e23140"
 
 [os]
+format = '(fg:current_line)[](fg:red)[$symbol ](fg:primary bg:red)[](fg:red)'
 disabled = false
-format = '[$symbol ]($style)'
-style = "fg:color_orange bg:color_bg3"
 
 [os.symbols]
 Windows = "󰍲"
 Ubuntu = "󰕈"
 SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
 Linux = "󰌽"
 Gentoo = "󰣨"
 Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
 Android = ""
 Arch = "󰣇"
 Artix = "󰣇"
@@ -91,131 +99,109 @@ Debian = "󰣚"
 Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
-[username]
-show_always = true
-style_user = "bg:color_blue fg:color_fg0"
-style_root = "bg:color_blue fg:color_fg0"
-format = '[ $user ]($style)'
-
 [directory]
-style = "bold #7777ff"
-format = "[ $path ]($style)"
-truncation_length = 8
-truncation_symbol = "… "
-truncate_to_repo = true
-#before_repo_root_style = '$style'
-#repo_root_style = '$style'
-#repo_root_format = '[$repo_root]($repo_root_style)$format[$read_only]($read_only_style) '
+format = '[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+home_symbol = "~"
+##truncation_symbol = ' '
+##truncation_length = 2
+##read_only = '󱧵 '
+##read_only_style = ''
 
 [git_branch]
-symbol = ""
-style = "bg:color_git"
-format = '[ \[$symbol $branch ]($style)'
+format = '[─](fg:current_line)[](fg:orange)[$symbol](fg:primary bg:orange)[ $branch ](fg:foreground bg:box)'
+symbol = " "
 
 [git_status]
-style = "bg:color_git"
-format = '[${all_status} ${ahead_behind}\]]($style)'
+format = '[$all_status](fg:orange bg:box)[](fg:box)'
 conflicted = ''
-#conflicted = ''
-ahead = '${count}⇡'
-behind = '${count}⇣'
-diverged = '⇕'
 up_to_date = ''
-#untracked = '${count}'  #    
 untracked = ''
 stashed = ''
 staged = ' ${count}'
 deleted = ' ${count}'
 modified = ' ${count}'
 renamed = ' ${count}'
-
-# file style          
-# squared style      
-
-[custom.git]
-format = '[ [$git_branch$git_status\]]($style)'
-style = 'bg:color_git fg:color_fg0'
-require_repo = true
-when = true
-
-[memory_usage]
-disabled = false
-threshold = 65
-format = '[$symbol ${ram} ]($style)'
-style = 'fg:color_fg0'
-symbol = '󰍛'
-
-[c]
-symbol = " "
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[python]
-symbol = ""
-style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[custom.pypoetry]
-#symbol = ""
-symbol = ""
-when = ''' test "${POETRY_ACTIVE}" = "1" -o -d "${VIRTUAL_ENV}" '''
-style = "bg:color_git"
-format = '[ $symbol ]($style)'
+diverged = '⇕'
+#ahead = ' ⇡${count}'
+#diverged = ' ⇕⇡${ahead_count}⇣${behind_count}'
+#behind = ' ⇣${count}'
 
 [docker_context]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $context](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile', 'compose.yaml']
+disabled = false
 
-[conda]
-style = "bg:color_bg3"
-format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
+[nodejs]
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = '󰎙 '
 
-[jobs]
-format = "[$symbol $number bg jobs ]($style)"
-style = "fg:color_jobs"
-symbol = '⏣' #  ⎔
-number_threshold = 1
+[rust]
+format = '[─](fg:current_line)[](fg:yellow)[$symbol](fg:primary bg:yellow)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
+
+[python]
+format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[ (${version})](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
+
+[java]
+format = '[─](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
+
+[golang]
+format = '[─](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
+
+[c]
+format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
+
+[cpp]
+format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
+
+[lua]
+format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
+symbol = ' '
 
 [fill]
-disabled = false
 symbol = '─'
-style = 'fg:color_bg3'
-#style = '#555599'
-
-[time]
-disabled = false
-time_format = "%F %R"
-style = "bg:color_bg3"
-format = '[[  $time](fg:color_fg0 bg:color_bg3)]($style)'
-
-[line_break]
-disabled = false
+style = 'fg:current_line'
 
 [status]
+format = "[─](fg:current_line)[](fg:status)[ ](fg:primary bg:status)[ $status $signal_name](fg:foreground bg:box)[](fg:box)"
+recognize_signal_code = true
+pipestatus = true
+pipestatus_separator = "-"
+pipestatus_segment_format = "$status"
+pipestatus_format = "[─](fg:current_line)[](fg:status)[ ](fg:primary bg:status)[ ](fg:status bg:box)[ $pipestatus](fg:foreground bg:box)[](fg:box)"
 disabled = false
-format = "[$symbol ]($style)"
-style = 'fg:color_failure'
-symbol = ' rc=${status} ${signal_name}'
-signal_symbol = '⚡'
-#success_symbol = '[](fg:color_success bg:color_bg3)'
-#error_symbol = '[](fg:bold red bg:color_bg3)'
 
 [cmd_duration]
+min_time = 1000
+format = '[─](fg:current_line)[](fg:orange)[ ](fg:primary bg:orange)[ $duration](fg:foreground bg:box)[](fg:box)'
+
+[localip]
+format = '[─](fg:current_line)[ $localipv4 ]($style)'
+ssh_only = false
 disabled = false
-format = "[ $duration ]($style)"
-style = 'fg:color_duration'
-min_time = 30_000
-show_notifications = false
-min_time_to_notify = 90_000
-notification_timeout = 10_000
+
+[time]
+format = '[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[ $time](fg:foreground bg:box)[](fg:box)'
+time_format = '%H:%M'
+#time_format = "%F %R"
+disabled = false
+
+[username]
+format = '[─](fg:current_line)[](fg:yellow)[](fg:primary bg:yellow)[ ](fg:yellow bg:box)[$user](fg:foreground bg:box)[](fg:box) '
+show_always = true
+disabled = true
+
+[character]
+format = """
+[$symbol](fg:current_line) """
+success_symbol = '[](fg:bold white)'
+error_symbol = '[](fg:bold red)'
+
+[profiles]
+transient = """$character"""

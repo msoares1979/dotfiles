@@ -1,0 +1,226 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """\
+${custom.beginchar}\
+$memory_usage\
+$jobs\
+$cmd_duration\
+$status\
+$line_break\
+${custom.beginchar}\
+[](color_bg3)\
+$os\
+[ ](bg:color_git fg:color_bg3)\
+${custom.beginchar}\
+$docker_context\
+$localip\
+$direnv\
+${custom.pypoetry}\
+${git_branch}\
+${git_status}\
+[](fg:color_git bg:color_bg3)\
+[](fg:color_bg3)\
+$fill\
+[](fg:color_bg3)\
+$time\
+[](fg:color_bg3)\
+$line_break\
+$directory\
+$line_break\
+${custom.promptchar} \
+"""
+
+continuation_prompt = ' '
+
+palette = 'gruvbox_dark'
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg2 = '#555599'
+color_bg3 = '#665c54'
+color_blue = '#4585aa'
+color_aqua = '#689d6a'
+color_green = '#98971a'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#cc241d'
+color_yellow = '#d79921'
+color_white = '#ffffff'
+color_git = '#f56d4e'
+color_success = 'green'
+color_failure = '#ff5555'
+color_duration = '#37c6ff'
+color_jobs = '#555599'
+
+#⌈ ⎛ ⎾ ⎧
+#⌊ ⎝ ⎿ ⎩
+#  ▷ ☯  ♺ ♻
+[custom.beginchar]
+when = true
+#format = '⎧ '
+format = ' '
+
+[custom.promptchar]
+when = true
+#format = '⎩ ♺'
+#format = ' '
+#format = ' '
+#format = ' '
+#format = ' '
+format = ' '
+
+[os]
+disabled = false
+format = '[$symbol ]($style)'
+style = "fg:color_orange bg:color_bg3"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:color_blue fg:color_fg0"
+style_root = "bg:color_blue fg:color_fg0"
+format = '[ $user ]($style)'
+
+[directory]
+style = "bold #7777ff"
+format = "[  $path ]($style)"
+#truncation_length = 8
+#truncation_symbol = "… "
+truncate_to_repo = false
+#before_repo_root_style = '$style'
+#repo_root_style = '$style'
+#repo_root_format = '[$repo_root]($repo_root_style)$format[$read_only]($read_only_style) '
+
+[git_branch]
+symbol = ""
+style = "bg:color_git"
+format = '[ \[$symbol $branch ]($style)'
+
+[git_status]
+style = "bg:color_git"
+format = '[${all_status} ${ahead_behind}\]]($style)'
+conflicted = ''
+#conflicted = ''
+ahead = '${count}⇡'
+behind = '${count}⇣'
+diverged = '⇕'
+up_to_date = ''
+#untracked = '${count}'  #    
+untracked = ''
+stashed = ''
+staged = ' ${count}'
+deleted = ' ${count}'
+modified = ' ${count}'
+renamed = ' ${count}'
+
+# file style          
+# squared style      
+
+[custom.git]
+format = '[ [$git_branch$git_status\]]($style)'
+style = 'bg:color_git fg:color_fg0'
+require_repo = true
+when = true
+
+[memory_usage]
+disabled = false
+threshold = 65
+format = '[$symbol ${ram} ]($style)'
+style = 'fg:color_fg0'
+symbol = '󰍛'
+
+[c]
+symbol = " "
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+[custom.pypoetry]
+#symbol = ""
+symbol = ""
+when = ''' test "${POETRY_ACTIVE}" = "1" -o -d "${VIRTUAL_ENV}" '''
+style = "bg:color_git"
+format = '[ $symbol ]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[conda]
+style = "bg:color_bg3"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[jobs]
+format = "[$symbol $number bg jobs ]($style)"
+style = "fg:color_jobs"
+symbol = '⏣' #  ⎔
+number_threshold = 1
+
+[fill]
+disabled = false
+symbol = '─'
+style = 'fg:color_bg3'
+#style = '#555599'
+
+[time]
+disabled = false
+time_format = "%F %R"
+style = "bg:color_bg3"
+format = '[[  $time](fg:color_fg0 bg:color_bg3)]($style)'
+
+[line_break]
+disabled = false
+
+[status]
+disabled = false
+format = "[$symbol ]($style)"
+style = 'fg:color_failure'
+symbol = ' rc=${status} ${signal_name}'
+signal_symbol = '⚡'
+#success_symbol = '[](fg:color_success bg:color_bg3)'
+#error_symbol = '[](fg:bold red bg:color_bg3)'
+
+[cmd_duration]
+disabled = false
+format = "[ $duration ]($style)"
+style = 'fg:color_duration'
+min_time = 30_000
+show_notifications = false
+min_time_to_notify = 90_000
+notification_timeout = 10_000
