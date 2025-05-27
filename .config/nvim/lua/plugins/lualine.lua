@@ -40,7 +40,7 @@ local function MyLineCount()
       local pos = vim.fn.getpos('.')
       local curline = vim.fn.getline('.')
       local linecount = vim.fn.line("$")
-      return string.format('󰆣%2d%2d%2d%2d', pos[2], linecount, pos[3], #curline)
+      return string.format(' %2d%2d%2d%2d', pos[2], pos[3], linecount, #curline)
     end
   }
 end
