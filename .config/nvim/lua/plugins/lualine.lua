@@ -74,7 +74,7 @@ return {
           always_show_tabline = false,
         },
         sections = {
-          lualine_a = {
+          lualine_b = {
             function() return "[" .. vim.fn.bufnr() .. "]" end,
             {
               "filename",
@@ -89,7 +89,7 @@ return {
               },
             },
           },
-          lualine_b = {
+          lualine_a = {
             { 'mode', fmt = function(str) return str:sub(1,1) end }
           },
           lualine_c = {
