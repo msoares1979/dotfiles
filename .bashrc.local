@@ -51,4 +51,8 @@ alias docker-ps='docker ps --format "table {{.ID}} {{.Names}}\t{{.Status}}\t{{.I
 
 termtitle() { printf "\033]0;$*\007"; }
 
-test "${DEVBOX_SHELL_ENABLED:-0}" -eq 1 || exec devbox shell -c ~/.config/devbox
+if [ -x `which devbox` ]; then
+	test "${DEVBOX_SHELL_ENABLED:-0}" -eq 1 || exec devbox shell -c ~/.config/devbox
+else
+	echo "devbox is not installed, skipping devbox shell setup"
+fi
