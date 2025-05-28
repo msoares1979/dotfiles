@@ -7,6 +7,9 @@
 	graph = log --oneline --graph --decorate
 	ci = commit -s
 	co = checkout
+# Better having a git alias instead of a shell alias as recommended by Atlassian
+# See https://www.atlassian.com/git/tutorials/dotfiles Dotfiles: Best way to store in a bare git repository
+	dotfiles = !git --git-dir=${HOME}/.local/share/dotfiles --work-tree=${HOME}
 
 [merge]
 	tool = vimdiff
