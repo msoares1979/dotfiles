@@ -7,6 +7,7 @@
     "docker@latest",
     "dos2unix@latest",
     "dust@latest",
+    "fastfetch@latest",
     "fzf@latest",
     "git@latest",
     "glibcLocales@latest",
@@ -33,8 +34,7 @@
   },
   "shell": {
     "init_hook": [
-      "echo 'devbox init hook begin'",
-      "echo 'devbox init hook end'"
+      "fastfetch"
     ],
     "scripts": {
       "work-from-home": [
