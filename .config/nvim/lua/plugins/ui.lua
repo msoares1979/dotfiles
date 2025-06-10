@@ -1,12 +1,11 @@
-require("catppuccin").setup {
-  custom_highlights = function(colors)
-    return {
-      WinSeparator = { fg = '#aaaaff' },
-    }
-  end
-}
-
 return {
+  {
+    "catppuccin",
+    opts = {
+      custom_highlights = { WinSeparator = { fg = '#aaaaff' } },
+      dim_inactive = { enabled = true, shade = "dark", percentage = 0.15 },
+    }
+  },
   {
     "snacks.nvim",
     opts = {
