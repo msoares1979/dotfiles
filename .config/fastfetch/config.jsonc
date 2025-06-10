@@ -106,24 +106,24 @@
         },
         {
             "type": "wm",
-            "key": "├─",
+            "key": "╰─",
             "keyColor": "yellow"
         },
-        {
-            "type": "theme",
-            "key": "├─󰉼",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "icons",
-            "key": "├─󰀻",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "wallpaper",
-            "key": "╰─󰸉",
-            "keyColor": "yellow"
-        },
+        //{
+        //    "type": "theme",
+        //    "key": "├─󰉼",
+        //    "keyColor": "yellow"
+        //},
+        //{
+        //    "type": "icons",
+        //    "key": "├─󰀻",
+        //    "keyColor": "yellow"
+        //},
+        //{
+        //    "type": "wallpaper",
+        //    "key": "╰─󰸉",
+        //    "keyColor": "yellow"
+        //},
         "break",
 
         {
@@ -169,12 +169,12 @@
             "keyColor": "blue",
             "timeout": 1000
         },
-        {
-            "type": "wifi",
-            "key": "├─",
-            "format": "{ssid}",
-            "keyColor": "blue"
-        },
+        //{
+        //    "type": "wifi",
+        //    "key": "├─",
+        //    "format": "{ssid}",
+        //    "keyColor": "blue"
+        //},
         {
             "type": "locale",
             "key": "╰─",
