@@ -3,7 +3,6 @@
 # See https://github.com/starship/starship/discussions/1107#discussioncomment-11666645
 
 format = """
-$os\
 $directory\
 $git_branch\
 $git_status\
@@ -23,7 +22,6 @@ $jobs\
 $status\
 $memory_usage\
 $localip\
-$time\
 $username\
 $line_break\
 $character\
@@ -100,7 +98,7 @@ Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
 [directory]
-format = '[─](fg:current_line)[](fg:pink)[󰷏 ](fg:primary bg:pink)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+format = '[](fg:pink)[󰷏 ](fg:primary bg:pink)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
 home_symbol = "~"
 ##truncation_symbol = ' '
 ##truncation_length = 2
