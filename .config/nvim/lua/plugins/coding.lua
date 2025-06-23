@@ -1,5 +1,15 @@
 
 return {
+  -- Otherwise active lsp will override these on buffer attach
+  {
+    "neovim/nvim-lspconfig",
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      keys[#keys + 1] = { "K", false }
+      keys[#keys + 1] = { "[[", false }
+      keys[#keys + 1] = { "]]", false }
+    end
+  },
   -- auto completion
   {
     "saghen/blink.cmp",
