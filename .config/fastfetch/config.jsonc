@@ -11,8 +11,9 @@
     },
     "modules": [
         {
-            "type": "host",
-            "key": "╭─󰌢",
+            "type": "title",
+            "key": "╭─",
+            "format": "{user-name}@{host-name}",
             "keyColor": "green"
         },
         {
@@ -23,21 +24,6 @@
         {
             "type": "gpu",
             "key": "├─󰍛",
-            "keyColor": "green"
-        },
-        {
-            "type": "disk",
-            "key": "├─",
-            "keyColor": "green"
-        },
-        {
-            "type": "memory",
-            "key": "├─󰑭",
-            "keyColor": "green"
-        },
-        {
-            "type": "swap",
-            "key": "├─󰓡",
             "keyColor": "green"
         },
         {
@@ -52,11 +38,6 @@
         //    "key": "├─󰃞",
         //    "keyColor": "green"
         //},
-        {
-            "type": "battery",
-            "key": "├─",
-            "keyColor": "green"
-        },
         {
             "type": "poweradapter",
             "key": "├─",
@@ -73,6 +54,11 @@
             "keyColor": "green"
         },
         {
+            "type": "locale",
+            "key": "├─",
+            "keyColor": "green"
+        },
+        {
             "type": "sound",
             "key": "╰─",
             "keyColor": "green"
@@ -80,61 +66,8 @@
         "break",
 
         {
-            "type": "shell",
-            "key": "╭─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "terminal",
-            "key": "├─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "terminalfont",
-            "key": "├─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "lm",
-            "key": "├─󰧨",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "de",
-            "key": "├─",
-            "keyColor": "yellow"
-        },
-        {
-            "type": "wm",
-            "key": "╰─",
-            "keyColor": "yellow"
-        },
-        //{
-        //    "type": "theme",
-        //    "key": "├─󰉼",
-        //    "keyColor": "yellow"
-        //},
-        //{
-        //    "type": "icons",
-        //    "key": "├─󰀻",
-        //    "keyColor": "yellow"
-        //},
-        //{
-        //    "type": "wallpaper",
-        //    "key": "╰─󰸉",
-        //    "keyColor": "yellow"
-        //},
-        "break",
-
-        {
-            "type": "title",
-            "key": "╭─",
-            "format": "{user-name}@{host-name}",
-            "keyColor": "blue"
-        },
-        {
             "type": "os",
-            "key": "├─{icon}", // Just get your distro's logo off nerdfonts.com
+            "key": "╭─{icon}", // Just get your distro's logo off nerdfonts.com
             "keyColor": "blue"
         },
         {
@@ -148,8 +81,23 @@
             "keyColor": "blue"
         },
         {
-            "type": "uptime",
-            "key": "├─󰅐",
+            "type": "disk",
+            "key": "├─",
+            "keyColor": "blue"
+        },
+        {
+            "type": "memory",
+            "key": "├─󰑭",
+            "keyColor": "blue"
+        },
+        {
+            "type": "swap",
+            "key": "├─󰓡",
+            "keyColor": "blue"
+        },
+        {
+            "type": "battery",
+            "key": "├─",
             "keyColor": "blue"
         },
         {
@@ -176,8 +124,8 @@
         //    "keyColor": "blue"
         //},
         {
-            "type": "locale",
-            "key": "╰─",
+            "type": "uptime",
+            "key": "╰─󰅐",
             "keyColor": "blue"
         }
     ]
