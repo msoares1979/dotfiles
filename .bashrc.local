@@ -43,7 +43,7 @@ if command -v direnv 2>&1 1>/dev/null; then
   eval "$(direnv hook bash)"
 fi
 
-FZF_DEFAULT_OPTS="--border=rounded --bind 'enter:become(nvim {})'"
+FZF_DEFAULT_OPTS="--border=rounded"
 export FZF_DEFAULT_OPTS
 
 alias ll='ls -lrt --color'
