@@ -27,7 +27,7 @@ local function MyTabCarrousel()
       local left = string.rep(' ', vim.fn.tabpagenr() - 1)
       local right = string.rep(' ', vim.fn.tabpagenr('$') - vim.fn.tabpagenr())
       --return left .. '' .. '%#lualine_a_normal#' .. str .. '%#lualine_b_normal#' .. right
-      return left .. '' .. right
+      return left .. '' .. right .. ' ' .. str
     end,
     -- color = { fg = '#89b4fa', bg = 'black', gui='bold' },
     cond = function() return vim.fn.tabpagenr('$') > 1 end,
