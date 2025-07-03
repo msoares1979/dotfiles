@@ -136,7 +136,19 @@ return {
             },
             { "filetype" },
           },
-          lualine_z = { MyLineCount() }
+
+          lualine_z = {
+            {
+              "location",
+              fmt = function()
+                local pos = vim.fn.getpos('.')
+                local line, column = pos[2], pos[3]
+                -- local maxcols = #vim.fn.getline('.')
+                -- local linecount = vim.fn.line("$")
+                return string.format('%3d%2d', line, column)
+              end,
+            }
+          },
         },
         inactive_sections = {}, -- not enabled anyway
         tabline = {
