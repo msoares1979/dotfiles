@@ -3,7 +3,7 @@ return {
     "catppuccin",
     opts = {
       custom_highlights = { WinSeparator = { fg = '#aaaaff' } },
-      dim_inactive = { enabled = true, shade = "dark", percentage = 0.15 },
+      dim_inactive = { enabled = true, shade = "dark", percentage = 2 },
     }
   },
   {
