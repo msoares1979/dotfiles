@@ -12,9 +12,10 @@ local M = {
     return {
       providers = {
         providers = {
-          { 'lsp',  require('hovercraft.provider.lsp.hover').new() },
-          { 'man',  require('hovercraft.provider.man').new() },
-          { 'dict', require('hovercraft.provider.dictionary').new() },
+          { 'LSP',  require('hovercraft.provider.lsp.hover').new() },
+          { 'Man',  require('hovercraft.provider.man').new() },
+          { 'Dict', require('hovercraft.provider.dictionary').new() },
+          { 'Diagnostics', require('hovercraft.provider.diagnostics').new() },
         }
       },
 
