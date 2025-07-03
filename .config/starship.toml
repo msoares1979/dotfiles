@@ -4,8 +4,12 @@
 
 format = """
 $directory\
+\
+$fill\
+\
 $git_branch\
 $git_status\
+\
 $docker_context\
 $golang\
 $nodejs\
@@ -14,8 +18,6 @@ $rust\
 $c\
 $cpp\
 $lua\
-\
-$fill\
 \
 $cmd_duration\
 $jobs\
@@ -31,11 +33,12 @@ palette = 'custom'
 add_newline = true
 
 [palettes.custom]
-foreground = '#222222'
+#foreground = '#222222'
+foreground = '#CCCCCC'
 background = '#1E1E2E'
 current_line = '#777777'
 primary = '#313244'
-box = '#777777'
+box = '#333333'
 blue = '#8AADF4'
 cyan = '#76E3F6'
 green = '#A6E3A1'
@@ -98,15 +101,17 @@ Redhat = "󱄛"
 RedHatEnterprise = "󱄛"
 
 [directory]
-format = '[](fg:pink)[󰷏 ](fg:primary bg:pink)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+#format = '[](fg:pink)[󰷏 ](fg:primary bg:pink)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+format = '[ ](fg:blue)[$read_only$truncation_symbol$path](fg:blue)'
 home_symbol = "~"
+truncate_to_repo = false
+truncation_length = 99
 ##truncation_symbol = ' '
-##truncation_length = 2
 ##read_only = '󱧵 '
 ##read_only_style = ''
 
 [git_branch]
-format = '[─](fg:current_line)[](fg:orange)[$symbol](fg:primary bg:orange)[ $branch ](fg:foreground bg:box)'
+format = ' (fg:current_line)[](fg:orange)[$symbol](fg:primary bg:orange)[ $branch ](fg:foreground bg:box)'
 symbol = " "
 
 [git_status]
@@ -125,73 +130,74 @@ diverged = '⇕'
 #behind = ' ⇣${count}'
 
 [docker_context]
-format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $context](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $context](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile', 'compose.yaml']
 disabled = false
 
 [nodejs]
-format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[ $version](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = '󰎙 '
 
 [rust]
-format = '[─](fg:current_line)[](fg:yellow)[$symbol](fg:primary bg:yellow)[ $version](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:yellow)[$symbol](fg:primary bg:yellow)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 
 [python]
-format = '[─](fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[ (${version})](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:green)[$symbol](fg:primary bg:green)[ (${version})](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 
 [java]
-format = '[─](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[ $version](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 
 [golang]
-format = '[─](fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[ $version](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:red)[$symbol](fg:primary bg:red)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 
 [c]
-format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 
 [cpp]
-format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 
 [lua]
-format = '[─](fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:blue)[$symbol](fg:primary bg:blue)[ $version](fg:foreground bg:box)[](fg:box)'
 symbol = ' '
 
 [fill]
-symbol = '─'
+#symbol = '─'
+symbol = ' '
 style = 'fg:current_line'
 
 [status]
-format = "[─](fg:current_line)[](fg:status)[ ](fg:primary bg:status)[ $status $signal_name](fg:foreground bg:box)[](fg:box)"
+format = " (fg:current_line)[](fg:status)[ ](fg:primary bg:status)[ $status $signal_name](fg:foreground bg:box)[](fg:box)"
 recognize_signal_code = true
 pipestatus = true
 pipestatus_separator = "-"
 pipestatus_segment_format = "$status"
-pipestatus_format = "[─](fg:current_line)[](fg:status)[ ](fg:primary bg:status)[ ](fg:status bg:box)[ $pipestatus](fg:foreground bg:box)[](fg:box)"
+pipestatus_format = " (fg:current_line)[](fg:status)[ ](fg:primary bg:status)[ ](fg:status bg:box)[ $pipestatus](fg:foreground bg:box)[](fg:box)"
 disabled = false
 
 [cmd_duration]
 min_time = 1000
-format = '[─](fg:current_line)[](fg:orange)[ ](fg:primary bg:orange)[ $duration](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:orange)[ ](fg:primary bg:orange)[ $duration](fg:foreground bg:box)[](fg:box)'
 
 [localip]
-format = '[─](fg:current_line)[ $localipv4 ]($style)'
+format = ' (fg:current_line)[ $localipv4 ]($style)'
 ssh_only = false
-disabled = false
+disabled = true
 
 [time]
-format = '[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[ $time](fg:foreground bg:box)[](fg:box)'
+format = ' (fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[ $time](fg:foreground bg:box)[](fg:box)'
 time_format = '%H:%M'
 #time_format = "%F %R"
 disabled = false
 
 [username]
-format = '[─](fg:current_line)[](fg:yellow)[](fg:primary bg:yellow)[ ](fg:yellow bg:box)[$user](fg:foreground bg:box)[](fg:box) '
+format = ' (fg:current_line)[](fg:yellow)[](fg:primary bg:yellow)[ ](fg:yellow bg:box)[$user](fg:foreground bg:box)[](fg:box) '
 show_always = true
 disabled = true
 
