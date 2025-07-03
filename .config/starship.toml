@@ -25,6 +25,7 @@ $status\
 $memory_usage\
 $localip\
 $username\
+${custom.clear}\
 $line_break\
 $character\
 """
@@ -206,6 +207,11 @@ format = """
 [$symbol](fg:current_line) """
 success_symbol = '[](fg:bold white)'
 error_symbol = '[](fg:bold red)'
+
+# Keep the line endings consistent
+[custom.clear]
+format = '(fg:current_line bg:black)'
+when = true
 
 [profiles]
 transient = """$character"""
