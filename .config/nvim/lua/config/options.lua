@@ -38,3 +38,7 @@ vim.opt.expandtab = false
 --      vim.bo[args.buf].formatexpr = nil
 --    end,
 --  })
+
+-- Appearance
+vim.opt.winborder = "rounded"
+vim.opt.colorcolumn = "80"

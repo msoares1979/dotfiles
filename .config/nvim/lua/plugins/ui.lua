@@ -8,6 +8,7 @@ return {
   },
   {
     "sphamba/smear-cursor.nvim",
+    enabled = false, -- breaks noice UI
     opts = {
       smear_between_buffers = true,
       smear_between_neighbor_lines = true,
