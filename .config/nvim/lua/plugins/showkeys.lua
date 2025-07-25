@@ -19,8 +19,8 @@ return {
 
 		--winhl = "FloatBorder:Comment,Normal:Normal",
 
-		timeout = 4, -- in secs
-		maxkeys = 4,
+		timeout = 5, -- in secs
+		maxkeys = 5,
 		show_count = false,
 		excluded_modes = {}, -- example: {"i"}
 
@@ -31,14 +31,16 @@ return {
 			["<BS>"] = "󰁮 ",
 			["<CR>"] = "󰘌",
 			["<Space>"] = "󱁐",
+			["<Tab>"] = "",
 			["<Up>"] = "󰁝",
 			["<Down>"] = "󰁅",
 			["<Left>"] = "󰁍",
 			["<Right>"] = "󰁔",
-			["<PageUp>"] = "Page 󰁝",
-			["<PageDown>"] = "Page 󰁅",
-			["<M>"] = "Alt",
-			["<C>"] = "Ctrl",
+			["<PageUp>"] = "Pg 󰁝",
+			["<PageDown>"] = "Pg 󰁅",
+			["<M>"] = "󰘵",
+			["<C>"] = "󰘴",
+			["<S>"] = "󰘶",
 		},
 	}
 }
