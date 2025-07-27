@@ -26,6 +26,8 @@ return {
     "snacks.nvim",
     opts = {
       dashboard = {
+        width = 40,
+        pane_gap = 2,
         preset = {
           pick = function(cmd, opts)
             return LazyVim.pick(cmd, opts)()
@@ -43,35 +45,18 @@ return {
           -- stylua: ignore
           ---@type snacks.dashboard.Item[]
           keys = {
-            { hidden = true, icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-            { hidden = true, icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-            { hidden = true, icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
-            { hidden = true, icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
-            { hidden = true, icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+            { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
         sections = {
           { section = "header", align = "center", enabled = false },
-          {
-            section = "terminal",
-            cmd = "chafa -s 64x32 --symbols block " .. vim.fn.stdpath("config") .. "/lua/plugins/header.jpg",
-            width = 64,
-            height = 20,
-            padding = 1
-          },
-          { section = "keys", gap = 1, padding = 1 },
-          {
-            align = 'center',
-            padding = 1,
-            text = {
-              { "   New File (n)" },
-              { "   Find File (f)" },
-              { "   Find Text (g)" },
-              { " 󰒲  Lazy (l)" },
-              { "   Quit (q)" }
-            }
-          },
-          { section = "recent_files", icon = " ", title = "Recent Files", indent = 2, padding = 1 },
+          { section = "keys", icon = "󰍜 ", title = "Actions", indent = 2, gap = 0, padding = 0 },
+          { section = "recent_files", icon = " ", title = "Recent Files", indent = 2, padding = 2 },
           { section = "session", indent = 2, padding = 1 },
           {
             section = "terminal",
@@ -85,7 +70,15 @@ return {
             padding = 1,
             indent = 2,
           },
-          { section = "startup" }
+          {
+            pane = 2,
+            section = "terminal",
+            cmd = "chafa -s 48x16 --symbols block " .. vim.fn.stdpath("config") .. "/lua/plugins/header.jpg",
+            width = 48,
+            height = 16,
+            padding = 0
+          },
+          { pane = 2, section = "startup" },
         }
       },
     },
