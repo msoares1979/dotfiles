@@ -41,13 +41,13 @@
         "export EMAIL=\"milton.soares.filho@zappware.com\"",
         "nmcli radio wifi on",
         "nmcli con up id 'Zappware VPN'",
-        "cd ~/projects/zappware/deployment/tasks"
+        "export CDPATH=~/projects/zappware/deployment/tasks"
       ],
       "work-from-office": [
         "echo 'devbox work: running work-from-office'",
         "export EMAIL=\"milton.soares.filho@zappware.com\"",
         "nmcli radio wifi off",
-        "cd ~/projects/zappware/deployment/tasks"
+        "export CDPATH=~/projects/zappware/deployment/tasks"
       ],
       "test": [
         "echo \"Error: no test specified\" && exit 1"
