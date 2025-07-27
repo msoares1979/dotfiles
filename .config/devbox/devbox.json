@@ -20,7 +20,6 @@
     "python3@latest",
     "ripgrep@latest",
     "starship@latest",
-    "stow@latest",
     "tmux@latest",
     "vimgolf@latest"
   ],
