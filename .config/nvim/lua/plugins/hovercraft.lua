@@ -1,5 +1,6 @@
 local M = {
   'patrickpichler/hovercraft.nvim',
+  priority = 1000,
 
   dependencies = {
     { 'nvim-lua/plenary.nvim' },
