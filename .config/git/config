@@ -5,7 +5,7 @@
 [alias]
 	st = status
 	graph = log --oneline --graph --decorate
-	ci = commit -s
+	ci = commit
 	co = checkout
 # Better having a git alias instead of a shell alias as recommended by Atlassian
 # See https://www.atlassian.com/git/tutorials/dotfiles Dotfiles: Best way to store in a bare git repository
@@ -20,3 +20,5 @@
 
 [includeif "gitdir:~/projects/zappware/**"]
 	path =  ~/.config/git/zappware
+[commit]
+	template = ~/.config/git/commit.md
