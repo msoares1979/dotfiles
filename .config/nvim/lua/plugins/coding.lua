@@ -22,12 +22,23 @@ return {
     "saghen/blink.cmp",
     enabled = true,
     dependencies = {
-      { 'L3MON4D3/LuaSnip', version = 'v2.*' }
+      { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+      { "fang2hou/blink-copilot" }
     },
     opts =  {
       snippets = { preset = 'default' },
       --snippets = { preset = 'luasnip' },
-      sources = { default = { "lsp", "path", "snippets", "buffer", "copilot" } },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer", "copilot" },
+        providers = {
+          copilot = {
+            name = "copilot",
+            module = "blink-copilot",
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
       completion = {
         keyword = { range = 'prefix' },
         menu = { auto_show = false, border = 'single' },
