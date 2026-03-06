@@ -28,19 +28,24 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     opts = {
-      textobjects = {
-        move = {
-          enable = true,
-          goto_next_start = {
-            ["]]"] = "@function.outer",
-            ["]c"] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[["] = "@function.outer",
-            ["[c"] = "@class.outer",
-          },
-        }
+      move = {
+        set_jumps = true,
       }
+    },
+    keys = {
+      {
+        "]]", mode = { "n", "x", "o" }, function()
+          require("nvim-treesitter-textobjects.move").goto_next_start({ "@function.outer", "@class.outer" }, "textobjects")
+        end
+      },
+      {
+        "[[", mode = { "n", "x", "o" }, function()
+          require("nvim-treesitter-textobjects.move").goto_previous_start({ "@function.outer", "@class.outer" }, "textobjects")
+        end
+      },
+      {
+        "[]", mode = { "n", "x", "o" }, "<cmd>NoiceAll<cr>"
+      },
     }
   }
 }
