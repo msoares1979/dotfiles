@@ -103,7 +103,8 @@ RedHatEnterprise = "󱄛"
 
 [directory]
 #format = '[](fg:pink)[󰷏 ](fg:primary bg:pink)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
-format = '[ ](fg:blue)[$read_only$truncation_symbol$path](fg:blue)'
+#format = '[ ](fg:blue)[$read_only$truncation_symbol$path](fg:blue)'
+format = '[$read_only$truncation_symbol$path](fg:blue)'
 home_symbol = "~"
 truncate_to_repo = false
 truncation_length = 99
